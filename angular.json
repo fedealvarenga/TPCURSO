@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TP": {
+    "Prueba": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tp",
+            "outputPath": "dist/prueba",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,13 +24,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/css/signin.css"
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/signin.css",
+              "src/assets/css/headers.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "src/assets/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
@@ -70,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "TP:build:production"
+              "browserTarget": "Prueba:build:production"
             },
             "development": {
-              "browserTarget": "TP:build:development"
+              "browserTarget": "Prueba:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TP:build"
+            "browserTarget": "Prueba:build"
           }
         },
         "test": {
@@ -105,6 +104,6 @@
     }
   },
   "cli": {
-    "analytics": "22a6aa4d-8ffc-494d-ae56-de5c6cb39cc4"
+    "analytics": "649aa3c9-aab0-43ba-b899-64fff2087c83"
   }
 }
