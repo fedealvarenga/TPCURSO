@@ -3,7 +3,10 @@ body {
   height: 100%;
 }
 
-
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #7e49be;
+  border: none;
+}
 .form-signin {
   width: 100%;
   max-width: 330px;
