@@ -1,7 +1,8 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -10,15 +11,34 @@ public class Usuario {
         @Column(name = "id")
         private Integer id;
         @Column(name = "nombre_de_usuario", unique=true, columnDefinition = "VARCHAR(255)")
+        @NotBlank
         private String nombreDeUsuario;
         @Column(name = "nombre", columnDefinition = "VARCHAR(255)")
+        @NotBlank
         private String nombre;
         @Column(name = "apellido", columnDefinition = "VARCHAR(255)")
+        @NotBlank
         private String apellido;
         @Column(name = "contrasenia", columnDefinition = "VARCHAR(255)")
+        @NotBlank
         private String contrasenia;
+        @Column(name="tipo")
+        @Enumerated(value = EnumType.STRING)
+        //@NotBlank
+        private Tipo tipo;
         @Column(name="activo",columnDefinition = "BOOLEAN")
         private boolean activo;
+
+        @OneToMany(mappedBy = "vendedor",cascade = {CascadeType.ALL})
+        private List<Producto> productosPublicados;
+
+        public Tipo getTipo() {
+                return tipo;
+        }
+
+        public void setTipo(Tipo tipo) {
+                this.tipo = tipo;
+        }
 
         public Integer getId() {
                 return id;
