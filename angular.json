@@ -24,6 +24,8 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/assets/css/general-styles.css",
+              "src/assets/font-awesome-4.7.0/css/font-awesome.min.css",
               "src/assets/css/bootstrap.min.css",
               "src/assets/css/signin.css",
               "src/assets/css/headers.css"
