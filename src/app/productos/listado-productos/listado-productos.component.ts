@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiDolarService } from 'src/app/generales/dolar/api-dolar.service';
 import { BuscarProductosService } from '../buscar-productos.service';
 
@@ -12,10 +13,11 @@ export class ListadoProductosComponent implements OnInit {
   productos: Array<any> | undefined;
   page=0;
   size=3;
-  categoria='AUDIO';
+  categoria=''; //tengo problemas de tipo nose como arreglarlo por eso lo dejo asi por ahora
   isFirst=false;
   isLast=false;
   constructor(
+    private ruta: ActivatedRoute,
     private dolarService: ApiDolarService,
     private buscarProductosService: BuscarProductosService,
   ) {
@@ -23,6 +25,8 @@ export class ListadoProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.busqueda = this.ruta.snapshot.queryParams != null ? this.ruta.snapshot.queryParamMap.get("busqueda") : "";
+    this.categoria=this.busqueda || '';
     this.cargarProductos();
   }
   private funciondolar(){

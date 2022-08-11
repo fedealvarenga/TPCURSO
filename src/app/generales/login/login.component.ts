@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 type User = {
   nombreDeUsuario: string | null;
   password: string | null;
@@ -12,7 +13,9 @@ export class LoginComponent implements OnInit {
     nombreDeUsuario: null,
     password: null
   }
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -32,5 +35,9 @@ export class LoginComponent implements OnInit {
     }
   guardar(idusuario : number){
           localStorage.setItem('id',String(idusuario)); //localStorege.getItem('id')
+          this.irAProductos();
+  }
+  public irAProductos(){
+    this.router.navigate(['/productos']);
   }
 }

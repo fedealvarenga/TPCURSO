@@ -8,15 +8,22 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
-
+  busqueda: string;
   constructor(
     private router: Router
-  ) { }
+  ) {
+    this.busqueda="";
+  }
 
   ngOnInit(): void {
+
   }
 
   public irALogIn(){
     this.router.navigate(['/login']);
+  }
+  public buscar() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.navigate(['/productos'], { queryParams: { busqueda: this.busqueda }});
   }
 }
