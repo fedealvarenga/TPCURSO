@@ -27,7 +27,12 @@ export class ListadoProductosComponent implements OnInit {
   ngOnInit(): void {
     this.busqueda = this.ruta.snapshot.queryParams != null ? this.ruta.snapshot.queryParamMap.get("busqueda") : "";
     this.categoria=this.busqueda || '';
-    this.cargarProductos();
+    if(this.categoria===''){
+      console.log("busqueda vacia")
+    } else {
+      this.cargarProductos();
+    }
+
   }
   private funciondolar(){
     this.dolarService.precioActual().subscribe((dolar: any)=>{
