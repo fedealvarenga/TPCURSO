@@ -10,28 +10,29 @@ import { ApiDolarService } from 'src/app/generales/dolar/api-dolar.service';
 })
 export class ProductoComponent implements OnInit {
   @Input() producto: any = null;
-  cotizacion: number;
+  @Input() cotizacion: number=0;
   precio={
     dolar: '',
     peso: 0
   };
   constructor(
-    private dolarService: ApiDolarService,
+    /*private dolarService: ApiDolarService,*/
     private cdr: ChangeDetectorRef,
   ) {
-      this.cotizacion=0;
+
   }
 
   ngOnInit(): void {
-    this.funciondolar();
+    //this.funciondolar();
+    this.calcularPrecio(this.producto);
   }
-  private funciondolar(){
+ /* private funciondolar(){
     this.dolarService.precioActual().subscribe((dolar: any)=>{
       this.cotizacion= Number(dolar.venta);
       this.calcularPrecio(this.producto);
-      this.cdr.detectChanges();
+     // this.cdr.detectChanges();
     })
-  }
+  }*/
 
   private calcularPrecio(prod:any){
     if(prod.tipoDeMoneda=="DOLAR"){
@@ -40,7 +41,7 @@ export class ProductoComponent implements OnInit {
     }else {
       this.precio.peso=prod.precio;
       this.pasaADolares(Number(prod.precio));
-    }//this.cdr.detectChanges();
+    }
   }
 
   private pasarAPesos(precioEnDolares: number){

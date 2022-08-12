@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiDolarService } from 'src/app/generales/dolar/api-dolar.service';
 import { BuscarProductosService } from '../buscar-productos.service';
@@ -11,6 +11,7 @@ export class ListadoProductosComponent implements OnInit {
   busqueda: string|null;
   resultados=[];
   productos: Array<any> | undefined;
+  cotizacion: number=0;
   page=0;
   size=3;
   categoria=''; //tengo problemas de tipo nose como arreglarlo por eso lo dejo asi por ahora
@@ -30,13 +31,15 @@ export class ListadoProductosComponent implements OnInit {
     if(this.categoria===''){
       console.log("busqueda vacia")
     } else {
-      this.cargarProductos();
+      this.funciondolar();
+      //this.cargarProductos();
     }
 
   }
   private funciondolar(){
     this.dolarService.precioActual().subscribe((dolar: any)=>{
-      precioDolar: dolar.venta
+      this.cotizacion= dolar.venta;
+      this.cargarProductos();
     })
   }
 
